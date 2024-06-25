@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure to store student information
+typedef struct {
+char name[50];
+float scores[5]; // Assuming 5 subjects for simplicity
+float average_score;
+float highest_score;
+float lowest_score;
+} Student;
+
+// Function to calculate average score of a student
+float calculate_average_score(float scores[], int n) {
+float sum = 0;
+for (int i = 0; i < n; i++) {
+sum += scores[i];
+}
+return sum/n;
+}
+
+// Function to find the highest score of a student
+float find_highest_score(float scores[], int n) {
+float max = scores[0];
+for (int i = 1; i < n; i++) {
+if (scores[i] > max) max = scores[i];
+}
+return max;
+}
+
+// Function to find the lowest score of a student
+float find_lowest_score(float scores[], int n) {
+float min = scores[0];
+for (int i = 1; i < n; i++) {
+if (scores[i] < min) {
+min = scores[i];
+}
+}
+return min;
+}
+
+int main() {
+// Assuming only 3 students for demonstration
+Student students[3];
+
+// Allowing users to input student information
+for (int i = 0; i < 3; i++) {
+    printf("Enter student name: ");
+    scanf("%s", students[i].name);
+
+    printf("Enter scores for 5 subjects: ");
+    for (int j = 0; j < 5; j++) {
+        scanf("%f", &students[i].scores[j]);
+    }
+
+    // Calculating average, highest, and lowest scores for each student
+    students[i].average_score = calculate_average_score(students[i].scores, 5);
+    students[i].highest_score = find_highest_score(students[i].scores, 5);
+    students[i].lowest_score = find_lowest_score(students[i].scores, 5);
+}
+
+// Displaying summary of students' performance
+for (int i = 0; i < 3; i++) {
+    printf("\nStudent Name: %s\n", students[i].name);
+    printf("Average Score: %.2f\n", students[i].average_score);
+    printf("Highest Score: %.2f\n", students[i].highest_score);
+    printf("Lowest Score: %.2f\n", students[i].lowest_score);
+}
+
+return 0;
+
+}
