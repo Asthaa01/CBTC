@@ -185,4 +185,10 @@ else if(val==2){
 printBill();
 }
 
-else if(val==3){
+else if(val==	system("cls");
+exit = true;
+cout<<"\tGood Luck!"<<endl;
+Sleep(3000);
+}	
+}
+}
